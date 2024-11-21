@@ -22,6 +22,12 @@ vim.keymap.set("n", "<c-o>", "<c-o>zz", { noremap = true })
 vim.keymap.set("n", "<c-i>", "<c-i>zz", { noremap = true })
 vim.keymap.set("n", "G", "Gzz", { noremap = true })
 
+-- quick resize windows size
+vim.keymap.set("n", "<up>", ":res +5<CR>", { noremap = true })
+vim.keymap.set("n", "<down>", ":res -5<CR>", { noremap = true })
+vim.keymap.set("n", "<left>", ":vertical resize -5<CR>", { noremap = true })
+vim.keymap.set("n", "<right>", ":vertical resize +5<CR>", { noremap = true })
+
 -- 在normal模式,使用<leader>qf 调用 lsp 的code_action
 local opts = { noremap = true, silent = true }
 
