@@ -2,7 +2,7 @@ return {
   { "sainnhe/gruvbox-material" },
   { "olimorris/onedarkpro.nvim" },
   { "navarasu/onedark.nvim" },
-  { "navarasu/onedark.nvim" },
+  { "sainnhe/everforest" },
   { "Mofiqul/dracula.nvim" },
   { "folke/tokyonight.nvim" },
   { "rose-pine/neovim" },
@@ -12,7 +12,12 @@ return {
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "dracula",
+      -- colorscheme = "everforest",
+      -- everforest_background = "soft",
+      -- everforest_italic = 1,
+
+      colorscheme = "gruvbox-material",
+      gruvbox_material_background = "hard",
     },
   },
 }

@@ -18,3 +18,17 @@ opt.list = true
 opt.listchars = { space = "·" }
 
 vim.g.autoformat = false
+
+-- enable nvim copy from remote server(nvim version should more than 0.10.0)
+-- force nvim use osc52 when copy
+vim.g.clipboard = {
+  name = 'OSC 52',
+  copy = {
+    ['+'] = require('vim.ui.clipboard.osc52').copy('+'),
+    ['*'] = require('vim.ui.clipboard.osc52').copy('*'),
+  },
+  paste = {
+    ['+'] = require('vim.ui.clipboard.osc52').paste('+'),
+    ['*'] = require('vim.ui.clipboard.osc52').paste('*'),
+  },
+}
