@@ -8,6 +8,7 @@ return {
   { "rose-pine/neovim" },
   { "marko-cerovac/material.nvim" },
   { "rose-pine/neovim" },
+  { "catppuccin/nvim" },
 
   {
     "LazyVim/LazyVim",
@@ -16,8 +17,10 @@ return {
       -- everforest_background = "soft",
       -- everforest_italic = 1,
 
-      colorscheme = "gruvbox-material",
-      gruvbox_material_background = "hard",
+      -- colorscheme = "gruvbox-material",
+      -- gruvbox_material_background = "hard",
+
+      colorscheme = "catppuccin-mocha",
     },
   },
 }
