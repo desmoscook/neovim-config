@@ -1,14 +1,14 @@
-if true then
-  return {}
-end
-
 return {
   {
     "neovim/nvim-lspconfig",
     opts = {
-      autoformat = false,
+      servers = {
+        pyright = {},
+      },
+      autoformat = true,
       ensure_installed = {
         "clangd",
+        "pyright",
         "jsonls",
       },
     },

@@ -7,11 +7,18 @@ local opt = vim.opt
 opt.winbar = "%=%m %f"
 opt.spell = false -- 关闭拼写检查
 
+-- font
+opt.guifont = "ComicShannsMono Nerd Font:h12"
+
+
 -- 自动换行
 opt.wrap = true
 opt.textwidth = 80
 
 opt.relativenumber = true
+
+-- 保持光标居中
+opt.scrolloff = 999
 
 -- 使用 · 显示空白字符
 opt.list = true

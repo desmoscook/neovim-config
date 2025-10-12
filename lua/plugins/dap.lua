@@ -1,6 +1,10 @@
 -- blog : https://miguelcrespo.co/posts/how-to-debug-like-a-pro-using-neovim/
 -- video: https://www.youtube.com/watch?v=oYzZxi3SSnM
 
+-- return {
+--
+-- }
+
 return {
   "mfussenegger/nvim-dap",
   dependencies = {

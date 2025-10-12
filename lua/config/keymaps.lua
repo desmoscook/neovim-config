@@ -10,18 +10,6 @@
 --   { noremap = true, silent = true, desc = "Resume" }
 -- )
 
--- let cursor in vertical center
-vim.keymap.set("n", "<esc>", ":noh<cr>zz")
-vim.keymap.set("n", "j", "gjzz")
-vim.keymap.set("n", "k", "gkzz")
-vim.keymap.set("n", "n", "nzz")
-vim.keymap.set("n", "<s-n>", "<s-n>zz")
-vim.keymap.set("n", "*", "*zz", { noremap = true })
-vim.keymap.set("n", "#", "#zz", { noremap = true })
-vim.keymap.set("n", "<c-o>", "<c-o>zz", { noremap = true })
-vim.keymap.set("n", "<c-i>", "<c-i>zz", { noremap = true })
-vim.keymap.set("n", "G", "Gzz", { noremap = true })
-
 -- quick resize windows size
 vim.keymap.set("n", "<up>", ":res +5<CR>", { noremap = true })
 vim.keymap.set("n", "<down>", ":res -5<CR>", { noremap = true })
@@ -45,3 +33,4 @@ local function quickfix()
 end
 
 vim.keymap.set("n", "<leader>qf", quickfix, opts)
+-- vim.keymap.set("n", "<leader>gg", "<cmd>Neogit cwd=%:p:h<CR>", { desc = "Neogit(curr file" })
