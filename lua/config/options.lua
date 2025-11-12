@@ -8,7 +8,7 @@ opt.winbar = "%=%m %f"
 opt.spell = false -- 关闭拼写检查
 
 -- font
-opt.guifont = "ComicShannsMono Nerd Font:h12"
+opt.guifont = "RecMonoCasual Nerd Font"
 
 
 -- 自动换行
@@ -39,3 +39,9 @@ vim.g.clipboard = {
     ['*'] = require('vim.ui.clipboard.osc52').paste('*'),
   },
 }
+
+-- parse jenkinsfile as groovy
+vim.api.nvim_create_autocmd({"BufRead", "BufNewFile"}, {
+    pattern = {"Jenkinsfile", "*Jenkinsfile*"},
+    command = "set filetype=groovy"
+})
