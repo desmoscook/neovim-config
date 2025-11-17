@@ -10,7 +10,6 @@ opt.spell = false -- 关闭拼写检查
 -- font
 opt.guifont = "RecMonoCasual Nerd Font"
 
-
 -- 自动换行
 opt.wrap = true
 opt.textwidth = 80

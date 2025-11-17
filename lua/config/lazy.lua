@@ -1,7 +1,3 @@
--- 1. lazy.nvim 的加载和存在性检测
--- stdpath("data")
--- macOS/Linux: ~/.local/share/nvim
--- Windows: ~/AppData/Local/nvim-data
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
   local lazyrepo = "https://github.com/folke/lazy.nvim.git"
@@ -16,29 +12,12 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
     os.exit(1)
   end
 end
-
--- 2. 将 lazy.nvim 所在目录加入到 lua 模块的搜索路径下，以便可以 require
--- rtp（runtime path）
--- nvim进行路径搜索的时候，除已有的路径，还会从prepend的路径中查找
--- 否则，下面 require("lazy") 是找不到的
 vim.opt.rtp:prepend(lazypath)
 
--- 3.加载 lazy.nvim 模块
 require("lazy").setup({
   spec = {
     -- add LazyVim and import its plugins
     { "LazyVim/LazyVim", import = "lazyvim.plugins" },
-
-    -- { import = "lazyvim.plugins.extras.coding.mini-surround" },
-    -- { import = "lazyvim.plugins.extras.ui.mini-animate" },
-
-    -- { import = "lazyvim.plugins.extras.ai.copilot" },
-    -- { import = "lazyvim.plugins.extras.ai.copilot-chat" },
-
-    -- { import = "lazyvim.plugins.extras.lang.clangd" },
-    -- { import = "lazyvim.plugins.extras.lang.python" },
-    -- { import = "lazyvim.plugins.extras.lang.json" },
-
     -- import/override with your plugins
     { import = "plugins" },
   },
