@@ -4,17 +4,20 @@
 
 local opt = vim.opt
 
+-- 强制暗色背景
+-- vim.o.background = "dark"
+
 opt.winbar = "%=%m %f"
 opt.spell = false -- 关闭拼写检查
 
 -- font
-opt.guifont = "RecMonoCasual Nerd Font"
+opt.guifont = "JetBrainsMono Nerd Font"
 
 -- 自动换行
 opt.wrap = true
 opt.textwidth = 80
 
-opt.relativenumber = true
+opt.relativenumber = false
 
 -- 保持光标居中
 opt.scrolloff = 999
@@ -33,28 +36,27 @@ vim.filetype.add({
 })
 
 -- enable nvim copy from remote server(nvim version should more than 0.10.0)
--- force nvim use osc52 when copy
+-- force nvim use osc52 when copy (unconditional: SSH_* vars are unreliable
+-- inside tmux, so we always route yanks through OSC52)
 -- config if terminal not support read from clipboard
-if os.getenv "SSH_CLIENT" ~= nil or os.getenv "SSH_TTY" ~= nil then
-    local function my_paste(_)
-        return function(_)
-            local content = vim.fn.getreg '"'
-            return vim.split(content, "\n")
-        end
+local function my_paste(_)
+    return function(_)
+        local content = vim.fn.getreg '"'
+        return vim.split(content, "\n")
     end
-
-    vim.g.clipboard = {
-        name = "OSC 52",
-        copy = {
-            ["+"] = require("vim.ui.clipboard.osc52").copy "+",
-            ["*"] = require("vim.ui.clipboard.osc52").copy "*",
-        },
-        paste = {
-            ["+"] = my_paste "+",
-            ["*"] = my_paste "*",
-        },
-    }
 end
+
+vim.g.clipboard = {
+    name = "OSC 52",
+    copy = {
+        ["+"] = require("vim.ui.clipboard.osc52").copy "+",
+        ["*"] = require("vim.ui.clipboard.osc52").copy "*",
+    },
+    paste = {
+        ["+"] = my_paste "+",
+        ["*"] = my_paste "*",
+    },
+}
 
 -- parse jenkinsfile as groovy
 vim.api.nvim_create_autocmd({"BufRead", "BufNewFile"}, {
@@ -71,13 +73,13 @@ vim.opt.conceallevel = 1
 -- 为 Markdown 文件设置特定的缩进
 vim.api.nvim_create_autocmd("FileType", {
   pattern = "markdown",
-  callback = function()
+  callback = function(args)
     vim.opt_local.tabstop = 4      -- 一个 Tab 显示为 4 个空格宽度
     vim.opt_local.shiftwidth = 4   -- 自动缩进时使用 4 个空格
     vim.opt_local.softtabstop = 4  -- 按 Tab 键插入 4 个空格
     vim.opt_local.expandtab = true -- 将 Tab 转换为空格
     vim.opt_local.spell = false    -- 关闭拼写检查
-    vim.diagnostic.enable(false)   -- 关闭诊断
+    vim.diagnostic.enable(false, { bufnr = args.buf }) -- 仅关闭当前 Markdown buffer 的诊断
   end,
 })
 

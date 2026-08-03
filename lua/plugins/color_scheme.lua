@@ -3,7 +3,13 @@ return {
   { "ellisonleao/gruvbox.nvim" },
   { "olimorris/onedarkpro.nvim" },
   { "navarasu/onedark.nvim" },
-  { "sainnhe/everforest" },
+  {
+    "sainnhe/everforest",
+    init = function()
+      -- everforest 暗色深浅: hard/medium/soft
+      vim.g.everforest_background = "hard"
+    end,
+  },
   { "Mofiqul/dracula.nvim" },
   -- { "folke/tokyonight.nvim" },
   {
@@ -34,7 +40,7 @@ return {
     "LazyVim/LazyVim",
     opts = {
       -- colorscheme = "dracula-soft",
-      -- colorscheme = "everforest",
+      colorscheme = "everforest",
 
       -- colorscheme = "rose-pine-moon",
       -- colorscheme = "rose-pine",
@@ -44,7 +50,7 @@ return {
       -- colorscheme = "gruvbox-material",
       -- gruvbox_material_background = "hard",
 
-      colorscheme = "catppuccin-latte",
+      -- colorscheme = "catppuccin-latte",
       -- colorscheme = "catppuccin-mocha",
       -- colorscheme = "catppuccin-frappe",
 

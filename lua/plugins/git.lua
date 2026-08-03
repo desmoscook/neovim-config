@@ -3,11 +3,11 @@ return {
     "sindrets/diffview.nvim",
     config = function()
       -- Diffview key mappings
-      -- local map = vim.api.nvim_set_keymap
-      -- local opts = { noremap = true, silent = true }
-      -- map('n', '<leader>do', ':DiffviewOpen<CR>', opts)
-      -- map('n', '<leader>dc', ':DiffviewClose<CR>', opts)
-      -- map('n', '<leader>df', ':DiffviewFileHistory<CR>', opts)
+      local map = vim.api.nvim_set_keymap
+      local opts = { noremap = true, silent = true }
+      map('n', '<leader>do', ':DiffviewOpen<CR>', opts)
+      map('n', '<leader>dc', ':DiffviewClose<CR>', opts)
+      map('n', '<leader>df', ':DiffviewFileHistory<CR>', opts)
     end,
   },
   -- { "tpope/vim-fugitive" },
