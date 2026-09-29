@@ -1,5 +1,6 @@
 return {
-  "desmoscook/codex.nvim",
+  {
+    "desmoscook/codex.nvim",
   lazy = true,
   cmd = { "Codex", "CodexToggle", "CodexSidebar", "CodexFloat" }, -- Optional: Load only on command execution
   keys = {
@@ -34,5 +35,24 @@ return {
     autoinstall = true, -- Automatically install the Codex CLI if not found
     panel = true, -- Open Codex in a side-panel (vertical split) instead of floating window
     use_buffer = false, -- Capture Codex stdout into a normal buffer instead of a terminal buffer
+    },
+  },
+
+  -- pi TUI integration — modeled on codex.nvim, full TUI features work
+  -- unchanged (slash commands, /model, /tree, …), session survives window close.
+  -- Repo: https://github.com/desmoscook/pi.nvim
+  {
+    "desmoscook/pi.nvim",
+    version = "*", -- follow tags; delete this line to track the default branch
+    lazy = true,
+    cmd = { "Pi", "PiSidePanel", "PiFloat", "PiRestart", "PiStop" },
+    keys = {
+      { "<leader>pt", function() require("pi-tui").toggle({ panel = true }) end, desc = "Toggle π TUI panel", mode = { "n", "t" } },
+      { "<leader>po", function() require("pi-tui").toggle({ panel = false }) end, desc = "Toggle π TUI float", mode = { "n", "t" } },
+    },
+    opts = { border = "rounded", width = 0.30, float_width = 0.8, height = 0.8 },
+    config = function(_, opts)
+      require("pi-tui").setup(opts)
+    end,
   },
 }

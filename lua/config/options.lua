@@ -24,7 +24,7 @@ opt.scrolloff = 999
 
 -- 使用 · 显示空白字符
 opt.list = true
-opt.listchars = { space = "·" }
+opt.listchars = { space = "·", tab = "▸ " }
 
 vim.g.autoformat = false
 
@@ -47,10 +47,10 @@ local function my_paste(_)
 end
 
 vim.g.clipboard = {
-    name = "OSC 52",
+    name = "system + OSC 52",
     copy = {
-        ["+"] = require("vim.ui.clipboard.osc52").copy "+",
-        ["*"] = require("vim.ui.clipboard.osc52").copy "*",
+        ["+"] = make_copy "+",
+        ["*"] = make_copy "*",
     },
     paste = {
         ["+"] = my_paste "+",
@@ -74,10 +74,10 @@ vim.opt.conceallevel = 1
 vim.api.nvim_create_autocmd("FileType", {
   pattern = "markdown",
   callback = function(args)
-    vim.opt_local.tabstop = 4      -- 一个 Tab 显示为 4 个空格宽度
-    vim.opt_local.shiftwidth = 4   -- 自动缩进时使用 4 个空格
-    vim.opt_local.softtabstop = 4  -- 按 Tab 键插入 4 个空格
-    vim.opt_local.expandtab = true -- 将 Tab 转换为空格
+    vim.opt_local.tabstop = 2      -- 一个 Tab 显示为 2 个空格宽度
+    vim.opt_local.shiftwidth = 2   -- 自动缩进时使用 2 个空格
+    vim.opt_local.softtabstop = 2  -- 按 Tab 键插入 2 个空格
+    vim.opt_local.expandtab = true -- 按 Tab / 缩进时一律用空格
     vim.opt_local.spell = false    -- 关闭拼写检查
     vim.diagnostic.enable(false, { bufnr = args.buf }) -- 仅关闭当前 Markdown buffer 的诊断
   end,

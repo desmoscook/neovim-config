@@ -88,4 +88,5 @@ return {
       end, { desc = "Open org note" })
     end,
   },
+  { "ChmaraX/herdr-nvim", opts = {} },
 }

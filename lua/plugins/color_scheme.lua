@@ -40,7 +40,7 @@ return {
     "LazyVim/LazyVim",
     opts = {
       -- colorscheme = "dracula-soft",
-      colorscheme = "everforest",
+      -- colorscheme = "everforest",
 
       -- colorscheme = "rose-pine-moon",
       -- colorscheme = "rose-pine",
@@ -54,7 +54,7 @@ return {
       -- colorscheme = "catppuccin-mocha",
       -- colorscheme = "catppuccin-frappe",
 
-      -- colorscheme = "tokyonight",
+      colorscheme = "tokyonight",
 
       -- colorscheme = "nordfox",
       -- colorscheme = "dayfox",
